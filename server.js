@@ -84,7 +84,7 @@ app.delete("/api/items/:id", async (req, res) => {
     }
 });
 
-//Show route
+//Show route again 
 app.get("/api/items/:id", async(req, res) =>{
     
      try {
