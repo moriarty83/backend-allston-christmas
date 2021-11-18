@@ -76,9 +76,9 @@ app.get("/api/items", async (req, res) => {
 //Create route
 app.post("/api/items", async (req, res) => {
     try {
-        // geoCode = await geocoder.geocode([req.body.address, req.body.city, req.body.state, req.body.zip].join(' '));
-        // req.body.latitude = geoCode[0].latitude;
-        // req.body.longitude = geoCode[0].longitude;
+        geoCode = await geocoder.geocode([req.body.address, req.body.city, req.body.state, req.body.zip].join(' '));
+        req.body.latitude = geoCode[0].latitude;
+        req.body.longitude = geoCode[0].longitude;
         res.json(await Item.create(req.body));
     } catch (error) {
         res.status(400).json({error})
