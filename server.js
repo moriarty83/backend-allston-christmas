@@ -30,6 +30,9 @@ const ItemSchema = new mongoose.Schema({
 	latitude: Number,
 	longitude: Number,
 	trashDay: Date, 
+    city: String,
+    state: String,
+    zip: Number
 })
 
 const Item = mongoose.model("Item", ItemSchema);
