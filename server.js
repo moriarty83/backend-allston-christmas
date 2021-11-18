@@ -1,5 +1,6 @@
 //Dependencies 
 require("dotenv").config();
+const NodeGeocoder = require ('node-geocoder');
 
 const{ PORT = 3000, MONGODB_URL} = process.env;
 
@@ -37,6 +38,15 @@ const ItemSchema = new mongoose.Schema({
 
 const Item = mongoose.model("Item", ItemSchema);
 
+//Geocoder
+const geocoderOptions = {
+    provider: 'google',
+    apiKey: process.env.APIKEY,
+    formatter: null,
+}
+
+const geocoder = NodeGeocoder(geocoderOptions)
+
 //Midleware
 app.use(cors());
 app.use(morgan("dev"));
@@ -63,6 +73,9 @@ app.get("/api/items", async (req, res) => {
 //Create route
 app.post("/api/items", async (req, res) => {
     try {
+        geoCode = await geocoder.geocode(req.body.address);
+        req.body.latitude = geoCode[0].latitude;
+        req.body.longitude = geoCode[0].longitude;
         res.json(await Item.create(req.body));
     } catch (error) {
         res.status(400).json({error})
@@ -72,6 +85,9 @@ app.post("/api/items", async (req, res) => {
 //Update route
 app.put("/api/items/:id", async (req, res) => {
     try {
+        geoCode = await geocoder.geocode(req.body.address);
+        req.body.latitude = geoCode[0].latitude;
+        req.body.longitude = geoCode[0].longitude;
         res.json(await Item.findByIdAndUpdate(req.params.id, req.body, {new: true}))
     } catch (error){
         res.status(400).json({error})
@@ -94,6 +110,16 @@ app.get("/api/items/:id", async(req, res) =>{
          res.json(await Item.findById(req.params.id))
      } catch (error) {res.status(400).json(error)};
     
+});
+
+//geo location test
+
+app.get("/geoloc", async(req, res)=>{
+    try{
+        geoCode = await geocoder.geocode("206 South St, Boston, MA")
+        res.json(geoCode[0].latitude);
+    }
+    catch (error) {res.status(400).json(error)}
 });
 
 
