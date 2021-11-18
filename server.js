@@ -27,6 +27,9 @@ const ItemSchema = new mongoose.Schema({
     name: String,
     description: String,
     address: String,
+    city: String,
+    state: String,
+    zip: String,
 	image_url: String,
 	latitude: Number,
 	longitude: Number,
@@ -70,7 +73,7 @@ app.get("/api/items", async (req, res) => {
 //Create route
 app.post("/api/items", async (req, res) => {
     try {
-        geoCode = await geocoder.geocode(req.body.address);
+        geoCode = await geocoder.geocode([req.body.address, req.body.city, req.body.state, req.body.zip].join(' '));
         req.body.latitude = geoCode[0].latitude;
         req.body.longitude = geoCode[0].longitude;
         res.json(await Item.create(req.body));
