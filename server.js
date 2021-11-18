@@ -76,10 +76,15 @@ app.get("/api/items", async (req, res) => {
 //Create route
 app.post("/api/items", async (req, res) => {
     try {
+        console.count("cheese")
         geoCode = await geocoder.geocode([req.body.address, req.body.city, req.body.state, req.body.zip].join(' '));
+        console.count("cheese")
         req.body.latitude = geoCode[0].latitude;
+        console.count("cheese")
         req.body.longitude = geoCode[0].longitude;
+        console.count("cheese")
         res.json(await Item.create(req.body));
+        console.count("cheese")
     } catch (error) {
         res.status(400).json({error})
     }
