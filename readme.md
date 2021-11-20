@@ -1,15 +1,11 @@
 For a backend used CRUD method. 
 
 Technologies used:
-JavaScript
-|
-Express.JS
-|
-MongoDB
-|
-Mongoose
-|
-Nodemon
+1. JavaScript
+2. Express.JS
+3. MongoDB
+4. Mongoose
+6. Nodemon
 
 User Stoies: 
 As a user I should be able to View all Available Items.
