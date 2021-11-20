@@ -18,5 +18,6 @@ As a Registered User I should be able to delete an item I created.
 |
 As a User, I should be able to indicate if I collected an item.
 |
+
 As a User, I should only be able to view items that haven't been disposed of.
 
