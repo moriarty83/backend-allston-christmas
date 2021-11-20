@@ -105,6 +105,17 @@ app.delete("/api/items/:id", async (req, res) => {
     }
 });
 
+app.get("/api/items/current", async (req, res) => {
+
+    const today = new Date();
+    try {
+        res.json(await Item.find({trashDay: { $gte: today }}));
+    } catch (error) {
+        res.status(400).json({error})
+    };
+
+});
+
 
 //Show route 
 
