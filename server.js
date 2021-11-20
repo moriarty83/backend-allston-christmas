@@ -35,8 +35,7 @@ const ItemSchema = new mongoose.Schema({
 	longitude: Number,
 	trashDay: Date, 
     city: String,
-    state: String,
-    zip: Number
+    state: String
 })
 
 const Item = mongoose.model("Item", ItemSchema);
