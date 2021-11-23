@@ -36,7 +36,8 @@ const ItemSchema = new mongoose.Schema({
 	trashDay: Date, 
     city: String,
     state: String,
-    reserved: {type: Boolean, default:  false}
+    reserved: {type: Boolean, default:  false},
+    reservedBy: String
 })
 
 const Item = mongoose.model("Item", ItemSchema);
