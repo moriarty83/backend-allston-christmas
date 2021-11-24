@@ -122,7 +122,7 @@ app.get("/api/items/current", async (req, res) => {
 
 });
 
-//user email roure
+//user email route
 app.get("/api/profile/:email", async(req, res) =>{
     
     try {
