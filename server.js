@@ -122,6 +122,15 @@ app.get("/api/items/current", async (req, res) => {
 
 });
 
+//user email roure
+app.get("/api/profile/:email", async(req, res) =>{
+    
+    try {
+        res.json(await Item.find({user_email: req.params.email}));
+    } catch (error) {res.status(400).json(error)};
+   
+});
+
 
 //Show route 
 
