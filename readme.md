@@ -1,23 +1,73 @@
-For a backend used CRUD method. 
+# Allston Christmas Backend
 
-Technologies used:
-1. JavaScript
-2. Express.JS
-3. MongoDB
-4. Mongoose
-6. Nodemon
+Allston Christmas makes finding Curbside Gems easier. By providing a platform where people can post what nice an useful items they are leaving on the curb people can more easily find curbside gems and prevent those second hand beauties from winding up in a landfill.
 
-User Stoies: 
-As a user I should be able to View all Available Items.
+Deployed on Herokuy, this site serves backend database information via RESTful API.
 
-As a user I should be able to View a Single Item and see it's location.
+## App Link
 
-As a Registered User I should be able to update an item I created.
+https://allstonchristmas.netlify.app/
 
-As a Registered User I should be able to delete an item I created.
+## Technologies
 
-As a User, I should be able to indicate if I collected an item.
+- JavaScript
+- Express
+- Mongoose
+- Mongo.DB
+- Google Geolocator API
+- Heroku
 
+## Preparations
 
-As a User, I should only be able to view items that haven't been disposed of.
+- Install NPM at the project folder. `npm install`
+- Link and Route component need react-router-dom.
 
+## Function
+
+- REST API serves database entries to Allston Christmas front end.
+- Full CRUD
+
+## Routes
+
+| Route               | HTTP Method | DB Action |
+| ------------------- | ----------- | --------- |
+| /api/items          | GET         | INDEX     |
+| /api/items          | POST        | CREATE    |
+| /api/items/:id      | GET         | SHOW      |
+| /api/items/:id      | PUT         | UPDATE    |
+| /api/items/:id      | DELETE      | DELETE    |
+| /api/profile/:email | GET         | INDEX\*   |
+
+\*This route is used for showing items filtered by user.
+
+[Routing Table](https://www.notion.so/674fc8746baf4482956b4dad6d13e26c)
+
+## Schema
+
+    name: String,
+    description: String,
+    address: String,
+    city: String,
+    state: String,
+    zip: String,
+    image_url: String,
+    latitude: Number,
+    longitude: Number,
+    trashDay: Date,
+    city: String,
+    state: String,
+    reserved: {type: Boolean, default:  false},
+    reservedBy: String,
+    user_email: String
+
+## Contributors
+
+- Andy Zheng
+- C. Marshall Moriarty
+- Dmitri Jecov
+
+## Reference
+
+- [W3Schools](https://www.w3schools.com/)
+- [stackoverflow](https://stackoverflow.com/)
+- [Google Maps Documentation](https://developers.google.com/maps/documentation)
