@@ -4,9 +4,9 @@ Allston Christmas makes finding Curbside Gems easier. By providing a platform wh
 
 Deployed on Herokuy, this site serves backend database information via RESTful API.
 
-## App Link
+## URL
 
-https://allstonchristmas.netlify.app/
+https://allston-christmas.herokuapp.com/
 
 ## Technologies
 
